@@ -28,6 +28,24 @@ e.g maxRecurringChar('aabacada') // will return 'a'
 //   return maxChar;
 // }
 
+const maxRecurringChar = text => {
+  let charMap = {};
+  let maxCharValue = 0;
+  let maxChar = '';
+
+  for (let char of text)
+    charMap.hasOwnProperty(char) ? charMap[char]++ : charMap[char] = 1;
+
+  for (let char in charMap) {
+    if (charMap[char] > maxCharValue) {
+      maxCharValue = charMap[char];
+      maxChar = char;
+    }
+  }
+
+  return maxChar;
+};
+
 // function maxRecurringChar(text) {
 //   let charMap = {};
 //   let charArray = [];
@@ -49,18 +67,18 @@ e.g maxRecurringChar('aabacada') // will return 'a'
 //   return charArray[valuesArray.indexOf(maxCharValue)];
 // }
 
-const maxRecurringChar = text => {
-  let charMap = {};
+// const maxRecurringChar = text => {
+//   let charMap = {};
 
-  for (let char of text)
-    charMap.hasOwnProperty(char) ? charMap[char]++ : charMap[char] = 1;
+//   for (let char of text)
+//     charMap.hasOwnProperty(char) ? charMap[char]++ : charMap[char] = 1;
 
-  const charArray = Object.keys(charMap);
-  const valuesArray = Object.values(charMap);
-  const maxCharValue = Math.max(...valuesArray);
+//   const charArray = Object.keys(charMap);
+//   const valuesArray = Object.values(charMap);
+//   const maxCharValue = Math.max(...valuesArray);
 
-  return charArray[valuesArray.indexOf(maxCharValue)];
-};
+//   return charArray[valuesArray.indexOf(maxCharValue)];
+// };
 
 
 module.exports = maxRecurringChar;
