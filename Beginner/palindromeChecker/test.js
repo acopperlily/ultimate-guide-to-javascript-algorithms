@@ -5,7 +5,7 @@ test('palindromeChecker is a function', () => {
 });
 
 test('"php" is a palindrome', () => {
-  expect(palindromeChecker('php')).toBeTruthy();
+  expect(palindromeChecker('Php')).toBeTruthy();
 });
 
 test('" php  " is not a palindrome', () => {
