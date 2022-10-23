@@ -20,4 +20,8 @@ test('returns the hamming distance for letters', () => {
   expect(hammingDistance('drummer', 'dresser')).toEqual(3)
 })
 
-
+test('throws error when strings are of unequal length', () => {
+  expect (() => {
+    hammingDistance('cat', 'chat');
+  }).toThrow('Strings do not have equal length');
+});
