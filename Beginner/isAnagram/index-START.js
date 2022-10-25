@@ -6,10 +6,66 @@ don't. E.g
 */
 
 
+// function isAnagram(stringA, stringB) {
+//   const sanitizeString = str => str.toLowerCase().replace(/[^a-z\d]/g, '').split('').sort().join('');
+
+//   return sanitizeString(stringA) === sanitizeString(stringB);
+// }
+
+// function isAnagram(stringA, stringB) {
+
+//   function createCharMap(text) {
+//     let charMap = {};
+
+//     for (let char of text) {
+//       if (charMap.hasOwnProperty(char)) {
+//         charMap[char]++;
+//       } else {
+//         charMap[char] = 1;
+//       }
+//     }
+    
+//     return charMap;
+//   }
+
+//   if (stringA.length === stringB.length) {
+//     let stringAMap = createCharMap(stringA);
+//     let stringBMap = createCharMap(stringB);
+//     for (let char in stringAMap) {
+//       if (stringAMap[char] !== stringBMap[char]) {
+//         return false;
+//       }
+//     }
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
 function isAnagram(stringA, stringB) {
-    // Code goes here
+
+  function createCharMap(text) {
+    let charMap = {};
+
+    for (let char of text) {
+      if (!charMap.hasOwnProperty(char))
+        charMap[char] = 0;
+      charMap[char]++;
+    }
+    return charMap;
+  }
+
+  if (stringA.length !== stringB.length) return false;
+
+  let stringAMap = createCharMap(stringA);
+  let stringBMap = createCharMap(stringB);
+  for (let char in stringAMap) {
+    if (stringAMap[char] !== stringBMap[char]) return false;
+  }
+  return true;
 }
 
+console.log(isAnagram('listen', 'silent'));
+console.log(isAnagram('I only work weekends', 'I only work weekdays'));
 
 module.exports = isAnagram
